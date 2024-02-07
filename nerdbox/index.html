@@ -174,7 +174,24 @@
 	Instead of loading js beepbox editor interface directly, test for browser support.
 	<script type="text/javascript" src="beepbox_editor.js"></script>
 	-->
-	<script type="text/javascript">
+	<script src="../replace_localstorage_with_indexeddb.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			const databaseName = "nerdboxFakeLocalStorage";
+			initializeFakeLocalStorage(databaseName).then(() => {
+				const scriptsToRun = document.querySelectorAll("script[type='text/plain']");
+				for (const scriptToRun of scriptsToRun) {
+					const code = scriptToRun.textContent;
+					const scriptElement = document.createElement("script");
+					scriptElement.setAttribute("type", "text/javascript");
+					scriptElement.textContent = code;
+					document.head.appendChild(scriptElement);
+				}
+			});
+		});
+	</script>
+	<!-- <script type="text/javascript"> -->
+	<script type="text/plain">
 
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|android|ipad|playbook|silk/i.test(navigator.userAgent) ) {
 	document.getElementById("introduction").innerHTML = "BeepBox is an online tool for sketching and sharing chiptune melodies. Make sure that your volume is turned up, then press the play button!";

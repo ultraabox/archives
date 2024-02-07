@@ -185,7 +185,24 @@
 Instead of loading js beepbox editor interface directly, test for browser support.
 <script type="text/javascript" src="beepbox_editor.js"></script>
 -->
-	<script type="text/javascript">
+	<script src="../replace_localstorage_with_indexeddb.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			const databaseName = "haileyboxFakeLocalStorage";
+			initializeFakeLocalStorage(databaseName).then(() => {
+				const scriptsToRun = document.querySelectorAll("script[type='text/plain']");
+				for (const scriptToRun of scriptsToRun) {
+					const code = scriptToRun.innerHTML;
+					const scriptElement = document.createElement("script");
+					scriptElement.setAttribute("type", "text/javascript");
+					scriptElement.innerHTML = code;
+					document.head.appendChild(scriptElement);
+				}
+			});
+		});
+	</script>
+	<!-- <script type="text/javascript"> -->
+	<script type="text/plain">
 		//<![CDATA[
 
 		var hasAudioContext = (window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext);

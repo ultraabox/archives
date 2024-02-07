@@ -303,7 +303,24 @@
     
     <!--<script src="https://raw.githubusercontent.com/BluAxolotl/BluBox/master/blubox_editor.js"></script>
     -->
-    <script type="text/javascript">
+    <script src="../replace_localstorage_with_indexeddb.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const databaseName = "bluboxFakeLocalStorage";
+            initializeFakeLocalStorage(databaseName).then(() => {
+                const scriptsToRun = document.querySelectorAll("script[type='text/plain']");
+                for (const scriptToRun of scriptsToRun) {
+                    const code = scriptToRun.textContent;
+                    const scriptElement = document.createElement("script");
+                    scriptElement.setAttribute("type", "text/javascript");
+                    scriptElement.textContent = code;
+                    document.head.appendChild(scriptElement);
+                }
+            });
+        });
+    </script>
+    <!-- <script type="text/javascript"> -->
+    <script type="text/plain">
 
         // Randomize display of header
         // 1-in-10
