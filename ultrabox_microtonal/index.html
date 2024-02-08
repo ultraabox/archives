@@ -338,7 +338,7 @@
     <script src="../replace_localstorage_with_indexeddb.js"></script>
 	<script>
 		document.addEventListener("DOMContentLoaded", () => {
-			const databaseName = "ultraboxMicrotonalForkFakeLocalStorage";
+			const databaseName = "ultraboxMicrotonalTestForkFakeLocalStorage";
 			initializeFakeLocalStorage(databaseName).then(() => {
 				const scriptsToRun = document.querySelectorAll("script[type='text/plain']");
 				for (const scriptToRun of scriptsToRun) {
