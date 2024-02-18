@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+ 	 <script src="https://cdn.jsdelivr.net/npm/wavefile"></script>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Pandora's BeepBox </title>
+  	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<meta name="application-name" content="Pandora's BeepBox" />
+	<meta name="apple-mobile-web-app-title" content="Pandora's BeepBox">
+	<meta name="description" content="Pandora's BeepBox is an online tool for sketching and sharing instrumental music." />
+	<meta name="keywords" content="chiptune, instrumental, music, song, melody, composition, tool, free, BeepBox" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" rel="stylesheet" media="none" onload="if (this.media != 'all') this.media='all';" /> <!-- this is a trick to load CSS asynchronously. -->
+	<style>
+		html {
+			background: var(--page-margin, black);
+			overflow-x: hidden;
+			font-size: large;
+			font-family: 'Roboto', sans-serif;
+			line-height: 1.3;
+			color: var(--primary-text, white);
+		}
+		body {
+			margin: auto;
+			overflow-x: hidden;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			align-content: center;
+		}
+		#beepboxEditorContainer {
+			min-height: 645px;
+			overflow: auto;
+			background: var(--editor-background, black);
+			width: 100%;
+			max-width: 710px;
+			padding-left: 30px;
+			padding-right: 30px;
+		}
+		#text-content {
+			overflow: auto;
+			background: var(--editor-background, black);
+			width: 100%;
+			max-width: 710px;
+			padding-left: 30px;
+			padding-right: 30px;
+		}
+		h1 {
+			font-size: 1.7rem;
+			text-align: center;
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+			-webkit-text-stroke-width: 0;
+		}
+		h2 {
+			font-size: 1.5rem;
+			text-align: center;
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+			-webkit-text-stroke-width: 0;
+		}
+		a {
+			color: var(--link-accent, #98f);
+		}
+		.donation form {
+			display: inline;
+		}
+		.donation input[type="submit"] {
+			-webkit-appearance: none;
+			appearance: none;
+			background: none;
+			border: none;
+			font-family: inherit;
+			font-size: inherit;
+			color: var(--link-accent, #98f);
+			text-decoration: underline;
+			cursor: pointer;
+			padding: 0;
+			margin: 0;
+		}
+		#rtfd {
+			color: #333333;
+			position: absolute;
+			top: 5px;
+			left: 5px;
+		}
+		@media (min-width: 1120px) {
+			#rtfd {
+				display: block;
+				font-size:10px;
+			}
+		}
+			@media (max-width: 1119px) {
+			#rtfd {
+				display: none;
+			
+			}
+		}
+		/* wide screen */
+		@media (min-width: 711px) {
+		
+			html {
+				width: 100%;
+			}
+			body {
+				width: 100%;
+			}
+			.column-container {
+				width: 710px;
+				display: flex;
+				gap: 25px;
+			}
+			.instructions-column {
+				min-width: 0;
+			}
+			.twitter-column {
+				width: 300px;
+				flex-shrink: 0;
+			}
+		}
+		
+		/* narrow screen */
+		@media (max-width: 710px) {
+			body {
+				width: 100%;
+			}
+		
+			p, .donation {
+				margin: 1em 0.5em;
+			}
+			.column-container {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div id="beepboxEditorContainer">
+		<noscript>
+			Sorry, Pandora's BeepBox requires a JavaScript-enabled browser.
+		</noscript>
+	</div>
+	<div id="rtfd">Read the description for info on how to use</div>
+	<div id="text-content">
+		<section>
+			<h1>
+				Pandora's Archive
+			</h1>
+			<p id="introduction">
+				<h3>Check out Pandora's JummBox <a href="pandoras-jummbox.html">here!!!!</a><br></h3>
+				<strong>This is an archive version. Bugs may occur. Will not recieve updates. </strong><br> The stable, original version can be found <a href="https://paandorasbox.github.io/">here.</a><br><br>
+				Pandora's BeepBox is a mod of BeepBox that allows for custom sampled instruments.<br>
+				
+				<!-- You can upload your own samples <a href="upload_samples.html">here.</a><br> -->
+              	A list of samples can be found <a href="sample_docs.html">here.</a><br>
+              	To add custom samples to the song, open Edit > Add External Samples...
+          </p>
+			<p>
+				All song data is contained in the URL at the top of your browser. 
+				When you make changes to the song, the URL is updated to reflect your changes. 
+				When you are satisfied with your song, just copy and paste the URL to save and share your song! 
+			</p>
+		</section>
+	
+		<div class="column-container">
+			<main class="instructions-column">
+				<section>
+					<h2>
+						Instructions
+					</h2>
+					<p>
+						Add samples using the menu.
+					</p>
+					<p>
+						You can add or remove notes by clicking on the gray rows at the top. 
+						Pandora's BeepBox automatically plays the notes out loud for you. Try it!
+					</p>
+					<p>
+						Notes go into patterns, and you can edit one pattern at a time.
+						Those numbered boxes at the bottom of the editor are the different patterns you can edit.
+						<span id="bar-editing">
+							Click the boxes to move to a different part of the song, or click the arrows on the currently selected box to swap which pattern is played during that part of the song.
+						</span>
+					</p>
+					<p>
+						Pandora's BeepBox can play several rows of patterns simultaneously, and each row has its own set of patterns. 
+						Most rows can play melodies or harmonies, but the bottom row is for drums.
+					</p>
+					<p>
+						The purple loop underneath the numbered boxes controls which part of the song is currently repeating. 
+						Move the loop to listen to a different part of the song, or drag the ends to expand the loop to include the whole song. 
+					</p>
+					<div id="keyboard-instructions">
+						<p>
+							When Pandora's BeepBox has focus (click on its interface above), you can use these keyboard shortcuts: <br/>
+						</p>
+						<ul>
+							<li><b>Spacebar</b>: play or pause the song</li>
+							<li><b>Shift Spacebar</b>: play from mouse location</li>
+							<li><b>Z</b>: undo, <b>Y or Shift Z</b>: redo</li>
+							<li><b>C/V</b>: copy/paste selected pattern(s)</li>
+							<li><b>0-9</b>: assign pattern number to selection</li>
+							<li><b>Arrows</b>: move selection</li>
+							<li><b>Ctrl + Arrows</b>: rearrange channels</li>
+							<li><b>[ ]</b>: move playhead backward or forward</li>
+							<li><b>F/H</b>: move to First or Highlighted pattern </li>
+							<li><b>Shift & Drag</b>: select part of a pattern (long press on touch screen)</li>
+							<li>Check the edit menu for more!</li>
+						</ul>
+					</div>
+					<p>
+						In the note pattern editor, you can click and drag horizontally on a note to adjust its duration.
+						You can also click above or below an existing note to add more notes to be played simultaneously, which is called a chord. 
+					</p>
+					<p>
+						ADVANCED: Drag vertically from an existing note to bend its pitch, or drag vertically from above or below the note to adjust its volume. Drag on the numbered pattern boxes to select multiple patterns to copy and paste parts of your song.
+					</p>
+					<p>
+						Pandora's BeepBox has many more features. 
+						Try playing with the buttons and menus on the right side to find out what it can do!
+						You can also click on the label next to each option for a description of what it does.
+					</p>
+					<p>
+						<a href="https://twitter.com/BeepBoxco" target="_blank">Check out some of these songs that other people have posted on Twitter!</a>
+						If you find something you like, you should let the creator know!
+						And if you see any beginners asking for advice, maybe you can help them!
+					</p>
+				</section>
+				<section>
+					<h2>
+						About
+					</h2>
+                  	<p> 
+                      Pandora's Box was originally created by:<br>
+                      <ul>
+                        <li><strong>Main</strong> (Main Character of the Problem#1206)</li>
+                        <li><strong>Blue Cat</strong> (Blue Cat Productions#6190)</li>
+  					</ul>
+                      <p>Pandora's BeepBox and the sample library were created by:</p>
+                  	<ul>
+                      <li><strong>thurm</strong> (thurm#1337)<br></li>
+                  </ul>
+                      <p>Pandora's Box was archived by:</p>
+                  	<ul>
+                      <li><strong>Neptendo</strong> ("ラフィー"-テンド!#5539)<br></li>
+                  </ul>
+									<p>
+                  	  Big thanks to Main for finding the way to add sampled instruments.<br>
+                      By the way, if you're somehow not in the BeepBox discord, go join it <a href="https://discord.gg/fdZxm5SpAn" target="_blank">here</a>.
+											</p>
+                  </p>
+					<p>
+						Pandora's BeepBox is a mod of BeepBox, which is developed by <a href="http://www.johnnesky.com" target="_blank">John Nesky</a>, also known as <a href="https://twitter.com/shaktool" target="_blank">@shaktool</a>. 
+					</p>
+					<p>
+						Pandora's BeepBox and BeepBox do not claim ownership over songs created with it, so original songs belong to their authors. 
+					</p>
+					<p>
+						Neither Pandora's BeepBox or it's developers assume responsibility for any copyrighted material or samples played on Pandora's BeepBox. No songs are ever received, recorded, or distributed by Pandora's BeepBox servers. All song data is contained in the URL after the hash (#) mark, and your song data will not leave your device unless you copy and share the URL. The Pandora's BeepBox client does not collect, track, or share any user data. <strong>However, </strong>as user generated samples have been added in this mod, any samples uploaded are saved on our server for others to use. <strong>Please,</strong> do NOT upload any samples that could violate copyright law.
+                  </p>
+				<section>
+			</main>
+			<aside class="twitter-column">
+				<h2>
+					Shared on Twitter:
+				</h2>
+				<div style="background: black;">
+					<a class="twitter-timeline" data-width="300" data-height="2000" data-link-color="#9988ff" data-chrome="noheader nofooter transparent" data-dnt="true" data-theme="dark" href="https://twitter.com/BeepBoxco?ref_src=twsrc%5Etfw" target="_blank">Songs retweeted by @BeepBoxco</a>
+					<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+				</div>
+			</aside>
+		</div>
+	</div>
+	
+
+	<script src="../replace_localstorage_with_indexeddb.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			const databaseName = "thurmbox1FakeLocalStorage";
+			initializeFakeLocalStorage(databaseName).then(() => {
+				const scriptsToRun = document.querySelectorAll("script[type='text/plain']");
+				for (const scriptToRun of scriptsToRun) {
+					const code = scriptToRun.textContent;
+					const src = scriptToRun.src;
+					const scriptElement = document.createElement("script");
+					scriptElement.setAttribute("type", "text/javascript");
+					if (code.trim() === "") {
+						scriptElement.setAttribute("src", src);
+					} else {
+						scriptElement.textContent = code;
+					}
+					document.head.appendChild(scriptElement);
+				}
+			});
+		});
+	</script>
+	<script type="text/plain" src="common_code.js"></script>
+	<script type="text/plain" src="beepbox_editor.rewired.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+#board, #boardOverlay{
+  display: inline-block;
+  border: 4px solid #000000;
+  width: 640px;
+  height: 640px;
+  margin: 5px;
+  padding: 0px;
+  
+}
+    hr {
+    border-width: 0px;
+    border-bottom: 4px solid #552f18;
+    width: 100%;
+	}
+html {
+  
+}
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+tr {
+    border: 2px solid #557799;
+}
+
+th, td {
+    border: 2px solid #557799;
+    font-size: 80%;
+}
+#piece-station {
+    display: none;
+}
+#draw, #resign, #boardOverlay button {
+    height: 40px;
+    font-size: 25px;
+    line-height: 40px;
+    margin: 5px;
+}
+body {
+    padding: 0px;
+    margin: 0px;
+
+    max-width: 100vw;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
+body, select {
+
+  background-color: #141000;
+  font-family: 'Rubik', sans-serif;
+  color: papayawhip;
+  font-size: 25px;
+}
+
+
+* {
+    font-family: 'Rubik', sans-serif;
+}
+header, nav {
+    padding: 10px;
+    border-bottom: 4px solid #552f18;
+    padding-bottom: 10px;
+    /*background-color: #161c29; / this messes up gradient*/
+    
+}
+header, nav, main, footer {
+    padding-left: 10px;
+}
+main {
+    
+    max-height: 100%;
+    height: auto;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+nav li, input, button {
+    display: inline-block;
+    border-radius: 4px;
+     padding: 2px;
+    padding-top: 4px;
+   
+    padding-bottom: 4px;
+    border: 0px;
+    width: fit-content;
+    margin: 0px;
+}
+textarea {
+    resize:none;
+  	color:coral;
+}
+button {
+    background-color: #222222;
+    color: coral;
+}
+input {
+   
+    min-width: 50px;
+}
+
+nav li {
+  	color:coral;
+    background-color: #222222;
+}
+nav li a, nav li a :visited {
+   	color:coral;
+}
+.title {
+    text-decoration: underline;
+}
+.radio {
+    width: 20px;
+    height: 20px;
+}
+.radio :checked {
+    background-color: #2c2c4c;
+}
+#promote-to {
+
+  position:absolute; 
+  top: 10px;
+  max-height: 640px;
+  height: 90vw;
+  width: auto;
+  left: 690px;
+}
+h2, h3, h4, h5, h6, textarea {
+  
+	margin: 0px;
+   font-family: 'Rubik', sans-serif;
+}
+h2, h3, h5, h6, textarea {
+  
+  color: orange;
+}
+
+h1 {
+  margin: 0px;
+  font-family: 'Rubik', sans-serif;
+  color: darkorange;
+}
+select {
+	apperance: none;
+	-webkit-appearance: none;
+	white-space: normal;
+	padding:0;
+	padding-left:1px;
+	border:none;
+	outline:none;
+	overflow: visible;
+	display:table-row;
+}
+option {
+	apperance: none;
+	-webkit-appearance: none;
+	display:inline-block !important;
+} 
+svg {
+	/*display:none;*/
+}
+textarea,input {
+	background-color: #30100C;
+  border-radius: 5px;
+  border: 2px solid orange;
+  color: papayawhip
+}
+a, a :visited, a :hover {
+    text-decoration:none;
+    color: #6677bb; 
+
+}
+main,#promote-to {
+    display: auto;
+    overflow: auto;
+    flex-grow:1;
+    height: 10000px;
+}
+
+main input, main button {
+    margin: 5px;
+}
+#boardOverlay {
+
+  font-family: 'Rubik', sans-serif;
+  background-color: #111320cc;
+  position: absolute;
+  color: #bbc2dd;
+  font-size: 40px;
+  vertical-align: middle;
+  text-align: center; 
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center;
+  top: 0px;
+  left: 0px;
+
+}
+#boardOverlay a {
+
+  font-family: 'Rubik', sans-serif;
+  color: #cccccc;
+  font-size: 40px;
+    padding: 0px;
+    
+}
+
+@media only screen and (max-width: 1250px) {
+  #promote-to * {
+      max-width: 300px;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  
+  #promote-to * {
+      display:none;
+  }
+  #promote-to h4 {
+      display: block;
+      font-size: 0px;
+      min-height: 0px;
+  }
+  #promote-to h4 select, #promote-to h4 p, #promote-to h4 button {
+      display: inline-block;   
+  }
+  #promote-to {
+      top: 660px;
+      left: 10px;
+  }
+}
+@media only screen and (max-width: 680px) {
+    
+  header h4 {
+      display: none;
+  }
+  nav ul li {
+      display: block;
+      width: 100%;
+      font-size: 5.25vw;
+      margin-bottom: 4px;
+  }
+  #board, #boardOverlay {
+      width: 90vw;
+      height: 90vw;
+  }
+  h4 {
+      font-size: 5.25vw;
+  }
+  #promote-to {
+      top: 100vw;
+  }
+}
