@@ -2,9 +2,7 @@
 
 // The prefix should end with a slash ("/").
 // var DEFAULT_SAMPLE_URL_PREFIX = "./samples/";
-// var DEFAULT_SAMPLE_URL_PREFIX = "https://file.garden/ZMQ0Om5nmTe-x2hq/PandoraArchive%20Samples/";
-// @TODO: To be restored once File Garden's usual domain is back online.
-var DEFAULT_SAMPLE_URL_PREFIX = "https://temporary-file-garden.link/ZMQ0Om5nmTe-x2hq/PandoraArchive%20Samples/";
+var DEFAULT_SAMPLE_URL_PREFIX = "https://file.garden/ZMQ0Om5nmTe-x2hq/PandoraArchive%20Samples/";
 
 // The suffix is normally ".wav", or ".txt", or even, empty ("").
 // var DEFAULT_SAMPLE_URL_SUFFIX = ".txt";
